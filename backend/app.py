@@ -16,7 +16,10 @@ from routes.suggestions import suggestions_bp
 
 def create_app():
     app = Flask(__name__)
-    allowed_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173")
+    allowed_origins = os.getenv(
+        "CORS_ORIGINS",
+        "http://localhost:5173,http://127.0.0.1:5173,https://.*\\.app\\.github\\.dev",
+    )
     CORS(app, resources={r"/api/*": {"origins": [origin.strip() for origin in allowed_origins.split(",")]}})
 
     app.register_blueprint(auth_bp, url_prefix="/api/auth")

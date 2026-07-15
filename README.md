@@ -69,6 +69,55 @@ The React app runs on `http://127.0.0.1:5173`.
 
 Copy `frontend/.env.example` to `frontend/.env` and paste your Firebase web app config. Enable Email/Password sign-in in Firebase Authentication. If these values are blank, the frontend opens in demo mode.
 
+## GitHub Codespaces
+
+Do not commit `.env` files or Firebase service account JSON files. Add secrets in GitHub instead.
+
+1. Push this repository to GitHub.
+2. Open the repo on GitHub.
+3. Select `Code` -> `Codespaces` -> `Create codespace on main`.
+4. Add Codespaces secrets in `Settings` -> `Secrets and variables` -> `Codespaces`.
+
+Required backend secrets:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+CARBON_INTERFACE_API_KEY=your_carbon_interface_key_optional
+FIREBASE_WEB_API_KEY=your_firebase_web_api_key
+FIREBASE_SERVICE_ACCOUNT_JSON={"type":"service_account",...}
+```
+
+Required frontend secrets or `frontend/.env` values:
+
+```env
+VITE_FIREBASE_API_KEY=your_firebase_web_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your-project-id
+VITE_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+Run backend in one Codespaces terminal:
+
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python app.py
+```
+
+Run frontend in another Codespaces terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev -- --host 0.0.0.0 --port 5173
+```
+
+Open the forwarded `5173` port. If the dashboard says Flask is not running, confirm the forwarded `5000` port is also running and public/visible in the Codespaces Ports tab.
+
 ## Verification
 
 ```bash

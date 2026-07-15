@@ -2,8 +2,27 @@ import axios from "axios";
 
 import { auth, isFirebaseConfigured } from "./firebase";
 
+function resolveApiBaseUrl() {
+  const configuredUrl = import.meta.env.VITE_API_URL;
+  if (configuredUrl) return configuredUrl;
+  if (typeof window === "undefined") return "http://localhost:5000/api";
+
+  const { hostname, protocol } = window.location;
+
+  if (hostname.endsWith(".app.github.dev")) {
+    const apiHostname = hostname.replace(/-\d+\.app\.github\.dev$/, "-5000.app.github.dev");
+    return `${protocol}//${apiHostname}/api`;
+  }
+
+  if (hostname === "localhost" || hostname === "127.0.0.1") {
+    return `http://${hostname}:5000/api`;
+  }
+
+  return "http://localhost:5000/api";
+}
+
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  baseURL: resolveApiBaseUrl(),
   timeout: 20000,
 });
 
