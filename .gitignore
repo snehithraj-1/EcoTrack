@@ -1,0 +1,15 @@
+.env
+*.env
+backend/.env
+frontend/.env
+backend/serviceAccountKey.json
+backend/*serviceAccount*.json
+backend/*firebase-adminsdk*.json
+backend/sarviceAccountKey.json
+backend/data/
+frontend/dist/
+frontend/node_modules/
+__pycache__/
+*.pyc
+*.log
+*.err

@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #17231d;
+  background: #f7fbf5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  background:
+    linear-gradient(120deg, rgba(236, 253, 245, 0.92) 0%, rgba(239, 246, 255, 0.92) 36%, rgba(255, 251, 235, 0.9) 68%, rgba(255, 241, 242, 0.9) 100%),
+    repeating-linear-gradient(135deg, rgba(34, 197, 94, 0.06) 0 1px, transparent 1px 24px);
+}
+
+.dark-mode body {
+  color: #e5f4ee;
+  background:
+    linear-gradient(120deg, rgba(6, 78, 59, 0.96) 0%, rgba(8, 47, 73, 0.96) 48%, rgba(68, 64, 60, 0.96) 100%),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 24px);
+}
+
+.dark-mode .glass-panel {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(12, 25, 22, 0.78);
+}
+
+.dark-mode .glass-panel h1,
+.dark-mode .glass-panel h2,
+.dark-mode .glass-panel h3,
+.dark-mode .text-stone-950,
+.dark-mode .text-stone-900,
+.dark-mode .text-stone-800 {
+  color: #f8fafc;
+}
+
+.dark-mode .text-stone-700,
+.dark-mode .text-stone-600,
+.dark-mode .text-stone-500 {
+  color: #cbd5e1;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  min-height: 2.5rem;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(18px);
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #16a34a 0%, #0891b2 44%, #f59e0b 100%);
+}
+
+.surface-gradient {
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.12), rgba(8, 145, 178, 0.12), rgba(245, 158, 11, 0.12));
+}
+
+.chart-box {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+}
+
+.heat-cell {
+  aspect-ratio: 1 / 1;
+}
+
+.gauge-progress {
+  transition: stroke-dashoffset 900ms ease, stroke 450ms ease;
+}
+
+.pulse-card {
+  animation: pulse-card 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-card {
+  0%,
+  100% {
+    opacity: 0.52;
+  }
+  50% {
+    opacity: 1;
+  }
+}
